@@ -1,0 +1,32 @@
+{
+  "id": "0151dba5-6743-4a19-ac93-cc70921c6cc3",
+  "name": "PartnerDevScript",
+  "publisher": "Default publisher",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "d68b3a56-b5d4-419a-bed9-3a0cd6831f8b",
+      "name": "nHanced Ecom",
+      "version": "34.0.3.0",
+      "publisher": "The 365 People"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "18.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50149
+    }
+  ],
+  "showMyCode": true,
+  "runtime": "7.0"
+}
