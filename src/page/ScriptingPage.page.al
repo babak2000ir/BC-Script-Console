@@ -44,18 +44,22 @@ page 50100 "Scripting Page"
     {
         area(Processing)
         {
-            action(ActionName)
+            action(RunScript)
             {
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = ExecuteBatch;
                 ApplicationArea = All;
 
                 trigger OnAction()
                 begin
-
+                    ScriptMgmt.ExecuteScript(Rec);
                 end;
             }
         }
     }
 
     var
-        myInt: Integer;
+        ScriptMgmt: Codeunit "Script Management";
 }
