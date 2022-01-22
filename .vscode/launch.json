@@ -36,6 +36,22 @@
             "enableSqlInformationDebugger": true,
             "tenant": "default",
             "schemaUpdateMode": "ForceSync"
+        },
+        {
+            "name": "Transperen - Sandbox",
+            "type": "al",
+            "request": "launch",
+            "authentication": "AAD",
+            "environmentType": "Sandbox",
+            "environmentName": "BookmarkSandbox",
+            "startupObjectId": 50210,
+            "breakOnError": true,
+            "breakOnRecordWrite": false,
+            "launchBrowser": true,
+            "enableSqlInformationDebugger": true,
+            "enableLongRunningSqlStatements": true,
+            "longRunningSqlStatementsThreshold": 500,
+            "numberOfSqlStatements": 10
         }
     ]
 }
