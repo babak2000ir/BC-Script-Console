@@ -99,7 +99,7 @@ codeunit 50100 "Script Management"
             //Message('%1,%2', lFields.RelationFieldNo, lFields.RelationTableNo);
             if lTableMetadata.Get(pScriptHeader."Table ID") then begin
                 //message('%1,%2,%3', lTableMetadata.LookupPageID);
-                if page.RunModal(lTableMetadata.LookupPageID) = action::LookupOK begin
+                if page.RunModal(lTableMetadata.LookupPageID) = action::LookupOK then begin
 
                 end;
             end;
@@ -120,16 +120,16 @@ codeunit 50100 "Script Management"
                 repeat
                     lField1 := '';
                     lField2 := '';
-                    if pFields.RelationFieldNo <> 0 then begin
-                        //load field
-                        lFieldRef := lRecordRef.Field(pFields.RelationFieldNo);
-                        if key <> relationFieldNo //also load key
+                // if pFields.RelationFieldNo <> 0 then begin
+                //     //load field
+                //     lFieldRef := lRecordRef.Field(pFields.RelationFieldNo);
+                //     if key <> relationFieldNo //also load key
 
-                    else
-                            //load key
-                            //Load next field
-                            lNameValue.AddNewEntry();
-                    end;
+                // else
+                //         //load key
+                //         //Load next field
+                //         lNameValue.AddNewEntry();
+                // end;
                 until lRecordRef.Next() = 0;
 
         end;
