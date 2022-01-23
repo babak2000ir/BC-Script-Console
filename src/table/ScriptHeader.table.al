@@ -9,6 +9,9 @@ table 50100 "Script Header"
             DataClassification = ToBeClassified;
             AutoIncrement = true;
         }
+        field(2; "Description"; Text[500])
+        {
+        }
         field(10; "Table ID"; Integer)
         {
             DataClassification = ToBeClassified;

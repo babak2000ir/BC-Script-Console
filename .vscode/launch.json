@@ -1,7 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
-        {
+        /* {
             "name": "Attach: BC18PartnerDev",
             "type": "al",
             "request": "attach",
@@ -36,7 +36,7 @@
             "enableSqlInformationDebugger": true,
             "tenant": "default",
             "schemaUpdateMode": "ForceSync"
-        },
+        }, */
         {
             "name": "Transperen - Sandbox",
             "type": "al",
@@ -44,7 +44,7 @@
             "authentication": "AAD",
             "environmentType": "Sandbox",
             "environmentName": "BookmarkSandbox",
-            "startupObjectId": 50210,
+            "startupObjectId": 50101,
             "breakOnError": true,
             "breakOnRecordWrite": false,
             "launchBrowser": true,

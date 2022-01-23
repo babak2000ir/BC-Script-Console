@@ -24,6 +24,7 @@ page 50100 "Scripting Page"
             part("Script Line List Part"; "Script Line List Part")
             {
                 SubPageLink = "Script Header Entry No." = field("Entry No.");
+                ApplicationArea = all;
             }
             group(TableAction)
             {
