@@ -57,6 +57,15 @@ table 50101 "Script Line"
         field(30; "Param 1"; Text[250])
         {
             DataClassification = ToBeClassified;
+
+            trigger OnLookup()
+            var
+                ScriptHeader: Record "Script Header";
+            begin
+                if ScriptHeader.Get(rec."Script Header Entry No.") and (ScriptHeader."Table ID" <> 0) then begin
+                    ScriptMgmt.OpenFieldLookup(ScriptHeader, Rec);
+                end;
+            end;
         }
         field(31; "Param 2"; Text[250])
         {
@@ -72,20 +81,6 @@ table 50101 "Script Line"
         }
     }
 
-    trigger OnInsert()
-    begin
-    end;
-
-    trigger OnModify()
-    begin
-    end;
-
-    trigger OnDelete()
-    begin
-    end;
-
-    trigger OnRename()
-    begin
-    end;
-
+    var
+        ScriptMgmt: Codeunit "Script Management";
 }

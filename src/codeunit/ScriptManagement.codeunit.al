@@ -88,4 +88,50 @@ codeunit 50100 "Script Management"
             until lScriptLine.Next() = 0;
         end;
     end;
+
+    procedure OpenFieldLookup(pScriptHeader: Record "Script Header"; pScriptLine: Record "Script Line")
+    var
+        lFields: Record Field;
+        lTableMetadata: Record "Table Metadata";
+        lTableRelationMetadata: Record "Table Relations Metadata";
+    begin
+        if lFields.Get(pScriptHeader."Table ID", pScriptLine."Field ID") then begin
+            //Message('%1,%2', lFields.RelationFieldNo, lFields.RelationTableNo);
+            if lTableMetadata.Get(pScriptHeader."Table ID") then begin
+                //message('%1,%2,%3', lTableMetadata.LookupPageID);
+                if page.RunModal(lTableMetadata.LookupPageID) = action::LookupOK begin
+
+                end;
+            end;
+        end;
+    end;
+
+    procedure UniversalLookup(pFields: Record Field)
+    var
+        lRecordRef: RecordRef;
+        lFieldRef: FieldRef;
+        lNameValue: record "Name/Value Buffer" temporary;
+        lNameValueLookup: page "Name/Value Lookup";
+        lField1, lField2 : text;
+    begin
+        if pFields.RelationTableNo <> 0 then begin
+            lRecordRef.Open(pFields.RelationTableNo);
+            if lRecordRef.FindSet(false, false) then
+                repeat
+                    lField1 := '';
+                    lField2 := '';
+                    if pFields.RelationFieldNo <> 0 then begin
+                        //load field
+                        lFieldRef := lRecordRef.Field(pFields.RelationFieldNo);
+                        if key <> relationFieldNo //also load key
+
+                    else
+                            //load key
+                            //Load next field
+                            lNameValue.AddNewEntry();
+                    end;
+                until lRecordRef.Next() = 0;
+
+        end;
+    end;
 }

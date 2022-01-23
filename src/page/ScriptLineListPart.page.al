@@ -15,10 +15,12 @@ page 50102 "Script Line List Part"
                 field("Script Header Entry No."; rec."Script Header Entry No.")
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field("Line No."; rec."Line No.")
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field("Field ID"; rec."Field ID")
                 {
