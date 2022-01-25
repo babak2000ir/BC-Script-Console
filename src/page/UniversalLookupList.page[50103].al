@@ -15,10 +15,14 @@ page 50103 "Universal Lookup List"
             usercontrol(UniversalLookupTable; "Universal Lookup Table")
             {
                 ApplicationArea = all;
+
+                trigger MyEvent(pData: Text)
+                begin
+                    Message(pData);
+                end;
             }
         }
     }
-
     actions
     {
         area(Processing)
@@ -29,12 +33,9 @@ page 50103 "Universal Lookup List"
 
                 trigger OnAction()
                 begin
-
+                    CurrPage.UniversalLookupTable.MyProcedure('This message is from BC');
                 end;
             }
         }
     }
-
-    var
-        myInt: Integer;
 }

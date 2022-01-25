@@ -12,22 +12,24 @@ controladdin "Universal Lookup Table"
     HorizontalShrink = true;
     Scripts =
         //Dev
-        'https://unpkg.com/react@17/umd/react.development.js',
-        'https://unpkg.com/react-dom@17/umd/react-dom.development.js',
-        'src\controladdin\UniversalLookupTable\reactScripts.js';
-    //Production
-    //'https://unpkg.com/react@17/umd/react.production.min.js',
-    //'https://unpkg.com/react-dom@17/umd/react-dom.production.min.js';
+        //'https://unpkg.com/react@17/umd/react.development.js',
+        //'https://unpkg.com/react-dom@17/umd/react-dom.development.js';
+        //Production
+        'https://unpkg.com/react@17/umd/react.production.min.js',
+        'https://unpkg.com/react-dom@17/umd/react-dom.production.min.js';
+    //'https://unpkg.com/babel-standalone@6/babel.min.js';
+    //'src\controladdin\UniversalLookupTable\reactScripts.js';
+
     //StyleSheets =
     //'style.css';
     StartupScript = 'src\controladdin\UniversalLookupTable\startupScript.js';
     //RecreateScript = 'src\controladdin\UniversalLookupTable\recreateScript.js';
-    RefreshScript = 'src\controladdin\UniversalLookupTable\refreshScript.js';
+    //RefreshScript = 'src\controladdin\UniversalLookupTable\refreshScript.js';
     //Images =
     //'image1.png',
     //'image2.png';
 
-    event MyEvent()
+    event MyEvent(pData: Text)
 
-    procedure MyProcedure()
+    procedure MyProcedure(pData: Text)
 }
