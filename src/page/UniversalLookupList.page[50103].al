@@ -9,33 +9,19 @@ page 50103 "Universal Lookup List"
     {
         area(Content)
         {
-            group(GroupName)
-            {
-            }
             usercontrol(UniversalLookupTable; "Universal Lookup Table")
             {
                 ApplicationArea = all;
 
-                trigger MyEvent(pData: Text)
+                trigger IsReady()
                 begin
-                    Message(pData);
+                    CurrPage.UniversalLookupTable.ShowRecords(UniversalLookupMgmt.GetTableRecord(Database::Customer, 50, 1));
                 end;
             }
-        }
-    }
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                ApplicationArea = All;
 
-                trigger OnAction()
-                begin
-                    CurrPage.UniversalLookupTable.MyProcedure('This message is from BC');
-                end;
-            }
         }
     }
+
+    var
+        UniversalLookupMgmt: Codeunit "Universal Lookup Mgmt.";
 }
