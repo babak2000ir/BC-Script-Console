@@ -60,13 +60,17 @@ codeunit 50101 "Universal Lookup Mgmt."
     var
         lFields: Record "Field";
         lJAResponse: JsonArray;
+        lJOPart: JsonObject;
     begin
         lFields.RESET();
         lFields.SETRANGE(TableNo, pTableId);
         if lFields.FINDSET() then
             repeat
                 if lFields.Enabled and (lFields.ObsoleteState = lFields.ObsoleteState::No) then begin
-                    lJAResponse.Add(lFields.FieldName);
+                    Clear(lJOPart);
+                    lJOPart.Add('fieldName', lFields.FieldName);
+                    lJOPart.Add('fieldType', lFields."Type Name");
+                    lJAResponse.Add(lJOPart);
                 end;
             until lFields.NEXT() = 0;
         exit(lJAResponse);
