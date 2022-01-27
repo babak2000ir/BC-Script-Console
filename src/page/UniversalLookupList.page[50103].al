@@ -15,13 +15,19 @@ page 50103 "Universal Lookup List"
 
                 trigger IsReady()
                 begin
-                    CurrPage.UniversalLookupTable.ShowRecords(UniversalLookupMgmt.GetTableRecord(Database::Customer, 50, 1));
+                    CurrPage.UniversalLookupTable.ShowRecords(UniversalLookupMgmt.GetTableRecord(gTableId, 50, 1));
                 end;
             }
 
         }
     }
 
+    procedure SetTableId(ptableId: Integer)
+    begin
+        gTableId := ptableId;
+    end;
+
     var
         UniversalLookupMgmt: Codeunit "Universal Lookup Mgmt.";
+        gTableId: Integer;
 }

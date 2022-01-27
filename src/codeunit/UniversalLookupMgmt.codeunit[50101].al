@@ -1,5 +1,14 @@
 codeunit 50101 "Universal Lookup Mgmt."
 {
+    procedure OpenLookup(ptableId: Integer)
+    var
+        lUniversalLookupPage: Page "Universal Lookup List";
+    begin
+        clear(lUniversalLookupPage);
+        lUniversalLookupPage.setTableId(ptableId);
+        lUniversalLookupPage.Run();
+    end;
+
     procedure GetTableRecord(pTableId: Integer; pPageSize: Integer; pPageIndex: Integer): JsonObject
     var
         lRecRef: RecordRef;

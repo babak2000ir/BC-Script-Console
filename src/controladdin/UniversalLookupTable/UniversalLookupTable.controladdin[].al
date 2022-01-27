@@ -1,6 +1,6 @@
 controladdin "Universal Lookup Table"
 {
-    //RequestedHeight = 300;
+    RequestedHeight = 700;
     MinimumHeight = 300;
     MaximumHeight = 700;
     //RequestedWidth = 700;

@@ -44,7 +44,7 @@
             "authentication": "AAD",
             "environmentType": "Sandbox",
             "environmentName": "BookmarkSandbox",
-            "startupObjectId": 50103,
+            "startupObjectId": 50104,
             "breakOnError": true,
             "breakOnRecordWrite": false,
             "launchBrowser": true,
