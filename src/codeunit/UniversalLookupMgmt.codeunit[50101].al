@@ -18,6 +18,8 @@ codeunit 50101 "Universal Lookup Mgmt."
         lCounter: Integer;
         lJOResponseHeader: JsonObject;
         lJAResponseLines: JsonArray;
+        lJAKeyFields: JsonArray;
+        lJAFields: JsonArray;
     begin
         lRecRef.OPEN(pTableId);
         if lRecRef.FINDSET then begin
@@ -32,7 +34,11 @@ codeunit 50101 "Universal Lookup Mgmt."
                     lRecordExist := lRecRef.NEXT(lStartRecord) <> 0;
 
             lJOResponseHeader.Add('numberOfRecords', lRecordCount);
-            lJOResponseHeader.Add('fields', GetFieldsData(pTableId));
+
+            GetFieldsData(pTableId, lJAKeyFields, lJAFields);
+
+            lJOResponseHeader.Add('keyFields', lJAKeyFields);
+            lJOResponseHeader.Add('fields', lJAFields);
 
             for lCounter := 1 to pPageSize do begin
                 if lRecordExist then begin
@@ -65,10 +71,9 @@ codeunit 50101 "Universal Lookup Mgmt."
         exit(lJOResponse);
     end;
 
-    local procedure GetFieldsData(pTableId: Integer): JsonArray
+    local procedure GetFieldsData(pTableId: Integer; pJAKeyFields: JsonArray; pJAFields: JsonArray)
     var
         lFields: Record "Field";
-        lJAResponse: JsonArray;
         lJOPart: JsonObject;
     begin
         lFields.RESET();
@@ -79,10 +84,12 @@ codeunit 50101 "Universal Lookup Mgmt."
                     Clear(lJOPart);
                     lJOPart.Add('fieldName', lFields.FieldName);
                     lJOPart.Add('fieldType', lFields."Type Name");
-                    lJAResponse.Add(lJOPart);
+                    if lFields.IsPartOfPrimaryKey then
+                        pJAKeyFields.Add(lJOPart)
+                    else
+                        pJAFields.Add(lJOPart);
                 end;
             until lFields.NEXT() = 0;
-        exit(lJAResponse);
     end;
 
     // procedure AddRelationalFieldXML(var RecRef: RecordRef; CombinedFieldName: Text[1024]);
