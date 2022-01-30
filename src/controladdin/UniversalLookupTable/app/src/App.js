@@ -43,7 +43,9 @@ function App() {
                   data-focus-zone="true">
                   <thead>
                     <tr role="row" aria-selected="false">
+                      {/* "->" field */}
                       <th className="icon-column" aria-label="Error" scope="col" role="columnheader"></th>
+                      {/* Error field */}
                       <th className="icon-column grid-selection-column" scope="col" role="presentation"
                         aria-hidden="true" aria-label="Selected" tabindex="-1">
                         <div tabindex="-1" role="checkbox" title="Select all rows"
@@ -82,6 +84,7 @@ function App() {
                                 className="right-area wide-hover-area"></span></button>
                         </th>
                       )}
+                      {/* Operations field */}
                       <th className="contextmenu-column freeze-pane-border" scope="col" role="columnheader"
                         aria-label="More Options" draggable="false">
                         <div></div>
@@ -130,7 +133,9 @@ function App() {
                     move to the next element after the table.</div>
                   <thead aria-hidden="true" role="rowgroup">
                     <tr role="row">
+                      {/* "->" field */}
                       <th className="icon-column" aria-label="Error" scope="col" role="columnheader"></th>
+                      {/* Error field */}
                       <th className="icon-column grid-selection-column" scope="col" role="presentation"
                         aria-hidden="true" aria-label="Selected" tabindex="-1">
                         <div tabindex="-1" role="checkbox" title="Select all rows"
@@ -140,15 +145,23 @@ function App() {
                               className="ms-nav-check-circle thm-cont-s2-subd-bgcolor-1 thm-cont-s2-subd-color-1--pseudo_before thm-cont-s2-subd-color-1--pseudo_after"
                               for="gridSelectAllCheckBox-bjz"></label></div>
                       </th>
-                      <th className="thm-cont-h1-bgcolor--hover" abbr="No." scope="col" role="columnheader"
-                        style={{ width: '15ex' }} aria-expanded="false" aria-sort="Ascending"></th>
+                      {/* Headers for Key Columns */}
+                      {tableData.keyFields.map((f, i) =>
+                        <th className="thm-cont-h1-bgcolor--hover" abbr="No." scope="col" role="columnheader"
+                          style={{ width: '15ex' }} aria-expanded="false" aria-sort="Ascending"></th>
+                      )}
+                      {/* Operations field */}
                       <th className="contextmenu-column" scope="col" role="columnheader"
                         aria-label="More Options">
                         <div></div>
                       </th>
-                      <th className="thm-cont-h1-bgcolor--hover" abbr="Name" scope="col" role="columnheader"
-                        style={{ width: '35ex' }} aria-expanded="false"></th>
+                      {/* Headers for Rest of the fields */}
+                      {tableData.fields.map((f, i) =>
+                        <th className="thm-cont-h1-bgcolor--hover" abbr="Name" scope="col" role="columnheader"
+                          style={{ width: '35ex' }} aria-expanded="false"></th>
+                      )}
                       <th className="freeze-pane-padding show-freeze-pane-padding" style={{ width: '0px' }}></th>
+
                     </tr>
                     <tr className="ms-nav-hidden" style={{ height: '0px' }}>
                       <td colspan="13" style={{ border: '0px' }}></td>
@@ -158,9 +171,11 @@ function App() {
                     {tableData.records.map((r, i) =>
                       <tr key={i} rowkey="bmh" role="row" className="thm-cont-g0-bgcolor real-current" aria-selected="true"
                         aria-rowindex="1">
+                        {/* "->" field */}
                         <td role="rowheader" tabindex="-1" scope="row"
                           className="thm-cont-h1-bgcolor-1--safe-sel-l1-hover--view-mode-grid thm-cont-h1-bgcolor--hover--edit-mode-grid thm-cont-g3-bdrcolor--border-top thm-cont-g3-bdrcolor--border-left--edit-mode-grid thm-cont-s1-bgcolor--grid-row-selected thm-cont-g0-bgcolor--grid-row-selected--edit-mode-grid thm-cont-s1-bgcolor--grid-row-current--multiselect-grid thm-cont-g0-bgcolor--grid-row-current--edit-mode-grid">
                         </td>
+                        {/* Error field */}
                         <td aria-hidden="true" role="presentation"
                           className="grid-selection-column thm-cont-g3-bdrcolor--border-top thm-cont-h1-bgcolor-1--safe-sel-l1-hover--view-mode-grid thm-cont-h1-bgcolor--hover--edit-mode-grid thm-cont-g3-bdrcolor--border-right--edit-mode-grid thm-cont-s1-bgcolor--grid-row-selected thm-cont-g0-bgcolor--grid-row-selected--edit-mode-grid thm-cont-s1-bgcolor--grid-row-current--multiselect-grid thm-cont-g0-bgcolor--grid-row-current--edit-mode-grid"
                           tabindex="-1">
@@ -172,7 +187,8 @@ function App() {
                                 data-focusable="true" data-prev-tabindex="-1" tabindex="-1"
                                 for="rowSelectCheckBox-bmh"></label></div>
                         </td>
-                        {Object.keys(r).map((key, i) =>
+                        {/* Key Columns */}
+                        {Object.keys(r).slice(0, tableData.keyFields.length).map((key, i) =>
                           <td key={i} aria-readonly="true" tabindex="-1" data-focusable="true" data-prev-tabindex="-1"
                             role="gridcell"
                             className="thm-cont-g3-bdrcolor--border-top thm-cont-g3-bdrcolor--border-right--edit-mode-grid thm-cont-h1-bgcolor-1--safe-sel-l1-hover--view-mode-grid thm-cont-h1-bgcolor--hover--edit-mode-grid thm-cont-s1-bgcolor--grid-row-selected thm-cont-g0-bgcolor--grid-row-selected--edit-mode-grid thm-cont-s1-bgcolor--grid-row-current--multiselect-grid thm-cont-g0-bgcolor--grid-row-current--edit-mode-grid edit-container edit-container-read"
@@ -183,29 +199,32 @@ function App() {
                               aria-labelledby="column_header_bkb bjnee">{r[key]}</a>
                           </td>
                         )}
+                        {/* Operations field */}
                         <td role="gridcell"
                           className="ms-list-itemLink-td ms-cellstyle thm-cont-g3-bdrcolor--border-top thm-cont-g3-bdrcolor--border-right--edit-mode-grid thm-cont-h1-bgcolor--hover--grid-row-nosel-hovered thm-cont-g0-bgcolor-1--grid-row-nosel-hovered thm-cont-s1-bgcolor--grid-row-selected thm-cont-s2-bgcolor--hover--grid-row-selected thm-cont-g0-bgcolor--grid-row-selected--edit-mode-grid--multiselect-grid thm-cont-s1-bgcolor--grid-row-current--multiselect-grid thm-cont-s1-bgcolor--grid-row-selected-current--multiselect-grid frozen-column-auto"
                           tabindex="-1"><a draggable="false" role="button" href="#" tabindex="-1"
                             className="ms-list-itemLink thm-cont-a2-icon-color--maxtint30--grid-row-current thm-glob-c0-icon-color thm-cont-s1-bdrcolor thm-cont-a2-icon-color--medtint30--grid-row-hovered icon-VertEllipsis thm-cont-s2-bgcolor--focus thm-cont-s2-bgcolor--states_opened ms-nav-contextmenu-trigger"
                             title="Show more options" data-tabbable="true" data-prev-tabindex="0"
                             aria-haspopup="menu" aria-expanded="false"></a></td>
-                        <td aria-readonly="true" tabindex="-1" data-focusable="true" data-prev-tabindex="-1"
-                          role="gridcell"
-                          className="thm-cont-g3-bdrcolor--border-top thm-cont-g3-bdrcolor--border-right--edit-mode-grid thm-cont-h1-bgcolor-1--safe-sel-l1-hover--view-mode-grid thm-cont-h1-bgcolor--hover--edit-mode-grid thm-cont-s1-bgcolor--grid-row-selected thm-cont-g0-bgcolor--grid-row-selected--edit-mode-grid thm-cont-s1-bgcolor--grid-row-current--multiselect-grid thm-cont-g0-bgcolor--grid-row-current--edit-mode-grid edit-container edit-container-read"
-                          controlname="Name"><span
-                            className="stringcontrol-read value thm-cont-u1-font-size-2--medflat thm-cont-u1-font-stack-2--medflat thm-cont-u1-color-2--medflat thm-cont-u1-color-2--medtint--grid-row-selected thm-cont-u1-color-2--mintint--grid-row-nosel-hovered thm-cont-g2-bgcolor-2 thm-cont-s1-bdrcolor--focus thm-cont-s1-outlinecolor--focus"
-                            data-tabbable="true" data-prev-tabindex="-1" tabindex="-1" id="bjoee"
-                            role="textbox" aria-readonly="true" title="Adatum Corporation"
-                            aria-labelledby="column_header_bka">Adatum Corporation</span></td>
-
-                        <td className="ms-nav-hidden thm-cont-g3-bdrcolor--border-top thm-cont-g3-bdrcolor--border-right--edit-mode-grid thm-cont-h1-bgcolor-1--safe-sel-l1-hover--view-mode-grid thm-cont-h1-bgcolor--hover--edit-mode-grid thm-cont-s1-bgcolor--grid-row-selected thm-cont-g0-bgcolor--grid-row-selected--edit-mode-grid thm-cont-s1-bgcolor--grid-row-current--multiselect-grid thm-cont-g0-bgcolor--grid-row-current--edit-mode-grid"
+                        {/* Headers for Rest of the fields */}
+                        {Object.keys(r).slice(tableData.keyFields.length).map((key, i) =>
+                          <td key={i} aria-readonly="true" tabindex="-1" data-focusable="true" data-prev-tabindex="-1"
+                            role="gridcell"
+                            className="thm-cont-g3-bdrcolor--border-top thm-cont-g3-bdrcolor--border-right--edit-mode-grid thm-cont-h1-bgcolor-1--safe-sel-l1-hover--view-mode-grid thm-cont-h1-bgcolor--hover--edit-mode-grid thm-cont-s1-bgcolor--grid-row-selected thm-cont-g0-bgcolor--grid-row-selected--edit-mode-grid thm-cont-s1-bgcolor--grid-row-current--multiselect-grid thm-cont-g0-bgcolor--grid-row-current--edit-mode-grid edit-container edit-container-read"
+                            controlname="Name"><span
+                              className="stringcontrol-read value thm-cont-u1-font-size-2--medflat thm-cont-u1-font-stack-2--medflat thm-cont-u1-color-2--medflat thm-cont-u1-color-2--medtint--grid-row-selected thm-cont-u1-color-2--mintint--grid-row-nosel-hovered thm-cont-g2-bgcolor-2 thm-cont-s1-bdrcolor--focus thm-cont-s1-outlinecolor--focus"
+                              data-tabbable="true" data-prev-tabindex="-1" tabindex="-1" id="bjoee"
+                              role="textbox" aria-readonly="true" title="Adatum Corporation"
+                              aria-labelledby="column_header_bka">{r[key]}</span></td>
+                        )}
+                        {/* <td className="ms-nav-hidden thm-cont-g3-bdrcolor--border-top thm-cont-g3-bdrcolor--border-right--edit-mode-grid thm-cont-h1-bgcolor-1--safe-sel-l1-hover--view-mode-grid thm-cont-h1-bgcolor--hover--edit-mode-grid thm-cont-s1-bgcolor--grid-row-selected thm-cont-g0-bgcolor--grid-row-selected--edit-mode-grid thm-cont-s1-bgcolor--grid-row-current--multiselect-grid thm-cont-g0-bgcolor--grid-row-current--edit-mode-grid"
                           aria-readonly="true" tabindex="-1" data-focusable="true" data-prev-tabindex="-1"
                           role="gridcell"></td>
                         <td className="ms-nav-hidden thm-cont-g3-bdrcolor--border-top thm-cont-g3-bdrcolor--border-right--edit-mode-grid thm-cont-h1-bgcolor-1--safe-sel-l1-hover--view-mode-grid thm-cont-h1-bgcolor--hover--edit-mode-grid thm-cont-s1-bgcolor--grid-row-selected thm-cont-g0-bgcolor--grid-row-selected--edit-mode-grid thm-cont-s1-bgcolor--grid-row-current--multiselect-grid thm-cont-g0-bgcolor--grid-row-current--edit-mode-grid thm-cont-g3-bdrcolor--border-bottom--edit-mode-grid"
                           aria-readonly="true" tabindex="-1" data-focusable="true" data-prev-tabindex="-1"
                           role="gridcell"></td>
                         <td className="freeze-pane-padding-border" tabindex="-1" aria-hidden="true"
-                          style={{ width: '0px' }}></td>
+                          style={{ width: '0px' }}></td> */}
                       </tr>
                     )}
                     {/* <tr rowkey="bmu" role="row" className="thm-cont-g0-bgcolor" aria-selected="false"
@@ -298,11 +317,11 @@ function App() {
                         style={{ width: '0px' }}></td>
                     </tr> */}
                   </tbody>
-                  <tfoot>
+                  {/* <tfoot>
                     <tr className="ms-nav-hidden" style={{ height: '0px' }}>
                       <td colspan="13" style={{ border: '0px' }}></td>
                     </tr>
-                  </tfoot>
+                  </tfoot> */}
                 </table> :
                 <div className="grid-emptyrowmessage" style={{ display: 'none' }}><span>(There is nothing to show in this view)</span>
                 </div>
