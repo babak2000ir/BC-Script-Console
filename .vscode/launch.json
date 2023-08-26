@@ -43,7 +43,7 @@
             "request": "launch",
             "authentication": "AAD",
             "environmentType": "Sandbox",
-            "environmentName": "BookmarkSandbox",
+            "environmentName": "Open-ai-sandbox",
             "startupObjectId": 50104,
             "breakOnError": true,
             "breakOnRecordWrite": false,

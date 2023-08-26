@@ -2,7 +2,7 @@
   "id": "0151dba5-6743-4a19-ac93-cc70921c6cc3",
   "name": "TPE Scripting Panel",
   "publisher": "TransPerEn",
-  "version": "1.0.4.0",
+  "version": "1.0.4.1",
   "brief": "Running Scripts on BC",
   "description": "Search for Scripting Page",
   "privacyStatement": "",
@@ -12,14 +12,19 @@
   "logo": "",
   "dependencies": [],
   "screenshots": [],
-  "platform": "1.0.0.0",
-  "application": "19.0.0.0",
+  "platform": "22.0.0.0",
+  "application": "22.0.0.0",
   "idRanges": [
     {
       "from": 50100,
       "to": 50149
     }
   ],
-  "showMyCode": true,
-  "runtime": "8.1"
+  "resourceExposurePolicy": {
+    "allowDebugging": true, 
+    "applyToDevExtension": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "11.0"
 }

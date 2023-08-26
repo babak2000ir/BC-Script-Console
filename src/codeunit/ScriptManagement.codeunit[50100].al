@@ -116,7 +116,7 @@ codeunit 50100 "Script Management"
     begin
         if pFields.RelationTableNo <> 0 then begin
             lRecordRef.Open(pFields.RelationTableNo);
-            if lRecordRef.FindSet(false, false) then
+            if lRecordRef.FindSet(false) then
                 repeat
                     lField1 := '';
                     lField2 := '';
