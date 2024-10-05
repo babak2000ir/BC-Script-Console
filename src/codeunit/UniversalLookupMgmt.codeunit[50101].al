@@ -53,6 +53,53 @@ codeunit 50101 "Universal Lookup Mgmt."
         exit(lJOResponseHeader);
     end;
 
+    procedure GetTableRecord2(pTableId: Integer; pPageSize: Integer; pPageIndex: Integer): Text
+    var
+        lRecRef: RecordRef;
+        lStartRecord: BigInteger;
+        lRecordExist: Boolean;
+        lRecordCount: Integer;
+        lCounter: Integer;
+        lJOResponseHeader: JsonObject;
+        lJAResponseLines: JsonArray;
+        lJAKeyFields: JsonArray;
+        lJAFields: JsonArray;
+        lResult: Text;
+    begin
+        lRecRef.OPEN(pTableId);
+        if lRecRef.FINDSET then begin
+            lStartRecord := pPageIndex * pPageSize;
+            lRecordCount := lRecRef.COUNT;
+            if lRecordCount <= lStartRecord - 1 then
+                lRecordExist := false
+            else
+                if lStartRecord = 0 then
+                    lRecordExist := true
+                else
+                    lRecordExist := lRecRef.NEXT(lStartRecord) <> 0;
+
+            lJOResponseHeader.Add('numberOfRecords', lRecordCount);
+
+            GetFieldsData(pTableId, lJAKeyFields, lJAFields);
+
+            lJOResponseHeader.Add('keyFields', lJAKeyFields);
+            lJOResponseHeader.Add('fields', lJAFields);
+
+            for lCounter := 1 to pPageSize do begin
+                if lRecordExist then begin
+                    lJAResponseLines.Add(GetEntityJson(lRecRef));
+                end;
+                lRecordExist := lRecRef.NEXT <> 0;
+            end;
+
+            lJOResponseHeader.Add('records', lJAResponseLines);
+        end;
+
+        lJOResponseHeader.WriteTo(lResult);
+
+        exit(lResult);
+    end;
+
     local procedure GetEntityJson(var pRecRef: RecordRef): JsonObject
     var
         lFields: Record "Field";

@@ -1,6 +1,22 @@
 {
     "version": "0.2.0",
     "configurations": [
+        {
+            "name": "Transperen ScriptSandbox",
+            "type": "al",
+            "request": "launch",
+            "environmentType": "Sandbox",
+            "environmentName": "ScriptSandbox",
+            "tenant": "c77f7dff-d01a-4ebf-b79c-1ce2d28f7847",
+            "startupObjectId": 22,
+            "breakOnError": "All",
+            "breakOnRecordWrite": "None",
+            "launchBrowser": true,
+            "enableSqlInformationDebugger": true,
+            "enableLongRunningSqlStatements": true,
+            "longRunningSqlStatementsThreshold": 500,
+            "numberOfSqlStatements": 10
+        }
         /* {
             "name": "Attach: BC18PartnerDev",
             "type": "al",
@@ -36,7 +52,7 @@
             "enableSqlInformationDebugger": true,
             "tenant": "default",
             "schemaUpdateMode": "ForceSync"
-        }, */
+        }, 
         {
             "name": "Transperen - Sandbox",
             "type": "al",
@@ -52,6 +68,6 @@
             "enableLongRunningSqlStatements": true,
             "longRunningSqlStatementsThreshold": 500,
             "numberOfSqlStatements": 10
-        }
+        }*/
     ]
 }
